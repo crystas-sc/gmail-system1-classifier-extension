@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Gmail System-1 Auto Classifier",
+  "version": "1.3",
+  "description": "Classifies Gmail email subjects via local API and checks targets.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "declarativeNetRequest"
+  ],
+  "host_permissions": [
+    "https://mail.google.com/*",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://mail.google.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}

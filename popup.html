@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 270px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 12px;
+      margin: 0;
+      color: #202124;
+    }
+    label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #3c4043;
+    }
+    textarea, input[type="text"], input[type="number"] {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 6px;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+    textarea {
+      height: 55px;
+      resize: vertical;
+    }
+    button {
+      width: 100%;
+      padding: 8px 12px;
+      background-color: #1a73e8;
+      color: #ffffff;
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 6px;
+    }
+    button:hover {
+      background-color: #1557b0;
+    }
+    button:disabled {
+      background-color: #bdc1c6;
+      cursor: not-allowed;
+    }
+    details {
+      margin-top: 10px;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
+      padding: 6px 8px;
+      background-color: #f8f9fa;
+    }
+    summary {
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      color: #1a73e8;
+      outline: none;
+      user-select: none;
+    }
+    .options-group {
+      margin-top: 8px;
+    }
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: normal;
+      cursor: pointer;
+      margin-bottom: 8px;
+    }
+    .checkbox-label input {
+      margin: 0;
+    }
+    #status {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #5f6368;
+      line-height: 1.4;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <label for="instructions">Instructions:</label>
+  <textarea id="instructions">Is this email subject contain bank transactional data </textarea>
+
+  <details>
+    <summary>Advanced Options</summary>
+    <div class="options-group">
+      <label class="checkbox-label">
+        <input type="checkbox" id="negateSelections">
+        Negate selections (Select when false)
+      </label>
+
+      <label for="probabilityThreshold">Probability Threshold (0.0 - 1.0):</label>
+      <input type="number" id="probabilityThreshold" value="0.4" step="0.05" min="0" max="1">
+
+      <label for="modelName">Model Name:</label>
+      <input type="text" id="modelName" value="kev">
+
+      <label for="apiUrl">API URL:</label>
+      <input type="text" id="apiUrl" value="http://localhost:11435/api/decide">
+
+      <label for="subjectColumnIndex">Subject Cell Index (1-based):</label>
+      <input type="number" id="subjectColumnIndex" value="6" min="1">
+    </div>
+  </details>
+
+  <button id="runBtn">Classify & Select</button>
+  <div id="status">Ready</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
